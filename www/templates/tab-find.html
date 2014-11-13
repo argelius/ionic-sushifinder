@@ -1,0 +1,9 @@
+<ion-view title="{{ restaurants ? 'Found ' + restaurants.length + ' restaurants.' : 'Searching...' }}">
+  <ion-content>
+    <ion-list>
+      <ion-item href="#/tab/restaurants/{{ restaurant.id }}" ng-repeat="restaurant in restaurants">
+      {{ restaurant.name }} <span class="item-note">{{ restaurant.location.distance|distance }}</span>
+      </ion-item>
+    </ion-list> 
+  </ion-content>
+</ion-view>

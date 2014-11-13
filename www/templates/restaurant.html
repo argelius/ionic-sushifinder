@@ -1,0 +1,18 @@
+<ion-view title="{{ restaurant.name }}">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-icon-right" href="http://maps.google.com/maps?daddr={{ restaurant.location.lat }},{{ restaurant.location.lng }}">
+        <p ng-repeat="line in restaurant.location.formattedAddress">
+          {{ line }}
+        </p>
+        <i class="icon ion-location"></i>
+      </ion-item>
+      <ion-item ng-show="restaurant.contact.phone" class="item-icon-right" href="tel: {{ restaurant.contact.phone }}">
+        <p>
+          {{ restaurant.contact.formattedPhone }}
+        </p>
+        <i class="icon ion-ios7-telephone"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
