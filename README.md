@@ -1,4 +1,4 @@
-ionic-sushifinder
+Ionic Sushifinder
 =================
 
 Sushi search app using the [Ionic](http://ionicframework.com/)
