@@ -31,6 +31,12 @@ ionic platform android
 ionic platform ios
 ```
 
+Install plugins
+
+```bash
+ionic plugin add org.apache.cordova.geolocation
+```
+
 Deploy to device
 
 ```bash
