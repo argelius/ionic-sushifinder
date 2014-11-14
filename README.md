@@ -12,6 +12,12 @@ Install ionic command line tool
 sudo npm install -g ionic
 ```
 
+Install dependencies
+
+```bash
+npm install
+```
+
 Install plugins
 
 ```bash
