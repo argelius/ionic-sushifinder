@@ -137,3 +137,4 @@ factory('Favorites', function($q, $window) {
     }
   }
 });
+

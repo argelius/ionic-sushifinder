@@ -51,22 +51,32 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }).
 
-    state('tab.favorite-detail', {
-      url: '/favorites/:id',
+    state('tab.restaurants', {
+      url: '/restaurants',
       views: {
-        'tab-favorites': {
+        'tab-restaurants': {
+          templateUrl: 'templates/tab-restaurants.html',
+          controller: 'RestaurantsCtrl'
+        }
+      }
+    }).
+
+    state('tab.restaurant-details', {
+      url: '/restaurants/:id',
+      views: {
+        'tab-restaurants': {
           templateUrl: 'templates/restaurant.html',
           controller: 'RestaurantCtrl'
         }
       }
     }).
 
-    state('tab.restaurant-detail', {
-      url: '/restaurants/:id',
+    state('tab.restaurant-photos', {
+      url: '/restaurants/:id/photos',
       views: {
-        'tab-find': {
-          templateUrl: 'templates/restaurant.html',
-          controller: 'RestaurantCtrl'
+        'tab-restaurants': {
+          templateUrl: 'templates/restaurant-photos.html',
+          controller: 'RestaurantPhotosCtrl'
         }
       }
     });
