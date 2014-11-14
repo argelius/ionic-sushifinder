@@ -1,7 +1,7 @@
 Ionic Sushifinder
 =================
 
-Sushi search app using the [Ionic](http://ionicframework.com/)
+Sushi search app using the [Ionic Framework](http://ionicframework.com/)
 
 Running
 -------
