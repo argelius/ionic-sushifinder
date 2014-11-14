@@ -32,26 +32,35 @@ angular.module('starter.controllers', [])
 .controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window, Favorites) {
   $foursquare.get($stateParams.id).then(
   function(restaurant) {
-    console.log(restaurant);
     $scope.restaurant = restaurant;
+    
+    Favorites.get(restaurant.id).then(
+    function() {
+      $scope.isFavorite = true;
+    },
+    function() {
+      $scope.isFavorite = false;
+    });
   },
   function(error) {
     $window.alert('Unable to find restaurant: ' + error);
   });
 
-  $scope.isFavorite = function(restaurant) {
-    
-    return (restaurant && typeof Favorites.get(restaurant.id) !== 'undefined');
-  };
-
   $scope.toggleFavorite = function(restaurant) {
-    Favorites.toggle(restaurant);
+    Favorites.toggle(restaurant).then(function(state) {
+      $scope.isFavorite = state;
+    });
   };
 })
 
 .controller('FavoritesCtrl', function($scope, Favorites) {
-  $scope.restaurants = Favorites.all(); 
-  console.log($scope.restaurants);
+  Favorites.all().then(
+  function(restaurants) {
+    $scope.restaurants = restaurants;
+  },
+  function(error) {
+    alert(error);
+  });
 })
 
 .filter('distance', function() {
