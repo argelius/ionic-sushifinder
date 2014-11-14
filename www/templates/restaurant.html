@@ -13,6 +13,18 @@
         </p>
         <i class="icon ion-ios7-telephone"></i>
       </ion-item>
+      <ion-item ng-click="toggleFavorite(restaurant)" class="item-icon-right">
+        <p>
+          <span ng-show="isFavorite(restaurant)">
+            <strong>You've favorited this restaurant</strong>
+            <i class="icon ion-ios7-heart"></i>
+          </span>
+          <span ng-hide="isFavorite(restaurant)">
+            Mark as favorite
+            <i class="icon ion-ios7-heart-outline"></i>
+          </span>
+        </p>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

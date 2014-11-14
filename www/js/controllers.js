@@ -29,7 +29,7 @@ angular.module('starter.controllers', [])
   $scope.findRestaurants();
 })
 
-.controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window) {
+.controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window, Favorites) {
   $foursquare.get($stateParams.id).then(
   function(restaurant) {
     console.log(restaurant);
@@ -38,6 +38,20 @@ angular.module('starter.controllers', [])
   function(error) {
     $window.alert('Unable to find restaurant: ' + error);
   });
+
+  $scope.isFavorite = function(restaurant) {
+    
+    return (restaurant && typeof Favorites.get(restaurant.id) !== 'undefined');
+  };
+
+  $scope.toggleFavorite = function(restaurant) {
+    Favorites.toggle(restaurant);
+  };
+})
+
+.controller('FavoritesCtrl', function($scope, Favorites) {
+  $scope.restaurants = Favorites.all(); 
+  console.log($scope.restaurants);
 })
 
 .filter('distance', function() {

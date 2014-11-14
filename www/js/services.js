@@ -94,4 +94,30 @@ factory('$foursquare', function($q, $http) {
       return deferred.promise;
     }
   }
+}).
+
+factory('Favorites', function($window) {
+  var favorites = angular.fromJson($window.localStorage.getItem('favorites') || '{}');
+
+  return {
+    get: function(id) {
+      return favorites[id];
+    },
+
+    toggle: function(restaurant) {
+      var id = restaurant.id;
+
+      if (favorites.hasOwnProperty(id)) {
+        delete favorites[id];
+      } else {
+        favorites[id] = restaurant.name;
+      }
+
+      $window.localStorage.setItem('favorites', angular.toJson(favorites));
+    },
+
+    all: function() {
+      return favorites;
+    }
+  }
 });
