@@ -13,6 +13,26 @@
         </p>
         <i class="icon ion-ios7-telephone"></i>
       </ion-item>
+      <ion-item ng-click="toggleFavorite(restaurant)" class="item-icon-right">
+        <p>
+          <span ng-show="isFavorite">
+            <strong>You've favorited this place!</strong>
+            <i class="icon ion-ios7-heart"></i>
+          </span>
+          <span ng-hide="isFavorite">
+            Click here to mark as favorite
+            <i class="icon ion-ios7-heart-outline"></i>
+          </span>
+        </p>
+      </ion-item>
+      <ion-item ng-show="restaurant.likes.count" class="item-icon-right">
+        <p><strong>{{ restaurant.likes.count }}</strong> people like this restaurant</p>
+        <i class="icon ion-thumbsup"></i>
+      </ion-item>
+      <ion-item ng-show="restaurant.photos.count" class="item-icon-right" href="#/tab/restaurants/{{ restaurant.id }}/photos">
+        <p>This restaurant has {{ restaurant.photos.count }} photos</p>
+        <i class="icon ion-camera"></i>
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

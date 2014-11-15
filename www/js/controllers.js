@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', []).
 
-.controller('FindCtrl', function($scope, $q, $geolocation, $foursquare, $window) {
+controller('FindCtrl', function($scope, $q, $geolocation, $foursquare, $window) {
   $scope.findRestaurants = function() {
     var deferred = $q.defer();
 
@@ -27,20 +27,63 @@ angular.module('starter.controllers', [])
   };
 
   $scope.findRestaurants();
-})
+}).
 
-.controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window) {
+controller('RestaurantsCtrl', function() {
+  console.log("HI");
+}).
+
+controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window, Favorites) {
+  console.log($stateParams.id);
+
   $foursquare.get($stateParams.id).then(
   function(restaurant) {
+    $scope.restaurant = restaurant;
+    
     console.log(restaurant);
+
+    Favorites.get(restaurant.id).then(
+    function() {
+      $scope.isFavorite = true;
+    },
+    function() {
+      $scope.isFavorite = false;
+    });
+  },
+  function(error) {
+    $window.alert('Unable to find restaurant: ' + error);
+  });
+
+  $scope.toggleFavorite = function(restaurant) {
+    Favorites.toggle(restaurant).then(function(state) {
+      $scope.isFavorite = state;
+    });
+  };
+}).
+
+controller('RestaurantPhotosCtrl', function($scope, $stateParams, $foursquare, $window) {
+  $scope.photoWidth = parseInt(0.9*$window.innerWidth);
+
+  $foursquare.get($stateParams.id).then(
+  function(restaurant) {
     $scope.restaurant = restaurant;
   },
   function(error) {
     $window.alert('Unable to find restaurant: ' + error);
   });
-})
+}).
 
-.filter('distance', function() {
+controller('FavoritesCtrl', function($scope, Favorites) {
+  Favorites.all().then(
+  function(restaurants) {
+    $scope.restaurants = restaurants;
+  },
+  function(error) {
+    alert(error);
+  });
+}).
+
+filter('distance', function() {
   return function(meters) {
     meters = parseInt(meters);
 

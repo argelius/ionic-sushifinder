@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="us.argeli.sushifinder" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>sushifinder</name>
+<widget id="us.argeli.ionic-sushifinder" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Ionic Sushifinder</name>
   <description>
-    A sushi restaurant finder.
+    A sushi restaurant finder built using the Ionic framework..
   </description>
   <author email="andreas@argeli.us" href="http:://argeliu.us/">
     Andreas Argelius

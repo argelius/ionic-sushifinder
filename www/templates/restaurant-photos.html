@@ -1,0 +1,10 @@
+<ion-view title="{{ restaurant.photos.count }} photos">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat-start="group in restaurant.photos.groups" class="item-divider">{{ group.name }}</ion-item>
+      <ion-item ng-repeat="photo in group.items" ng-repeat-end>
+        <img ng-src="{{ photo.prefix }}width{{ photoWidth }}{{ photo.suffix }}">
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

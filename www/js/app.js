@@ -41,12 +41,42 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }).
 
-    state('tab.restaurant-detail', {
+    state('tab.favorites', {
+      url: '/favorites',
+      views: {
+        'tab-favorites': {
+          templateUrl: 'templates/tab-favorites.html',
+          controller: 'FavoritesCtrl'
+        }
+      }
+    }).
+
+    state('tab.restaurants', {
+      url: '/restaurants',
+      views: {
+        'tab-restaurants': {
+          templateUrl: 'templates/tab-restaurants.html',
+          controller: 'RestaurantsCtrl'
+        }
+      }
+    }).
+
+    state('tab.restaurant-details', {
       url: '/restaurants/:id',
       views: {
-        'tab-find': {
+        'tab-restaurants': {
           templateUrl: 'templates/restaurant.html',
           controller: 'RestaurantCtrl'
+        }
+      }
+    }).
+
+    state('tab.restaurant-photos', {
+      url: '/restaurants/:id/photos',
+      views: {
+        'tab-restaurants': {
+          templateUrl: 'templates/restaurant-photos.html',
+          controller: 'RestaurantPhotosCtrl'
         }
       }
     });

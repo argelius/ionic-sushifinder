@@ -94,4 +94,47 @@ factory('$foursquare', function($q, $http) {
       return deferred.promise;
     }
   }
+}).
+
+factory('Favorites', function($q, $window) {
+  var favorites = angular.fromJson($window.localStorage.getItem('favorites') || '{}');
+
+  return {
+    get: function(id) {
+      var deferred = $q.defer();
+      
+      if (favorites.hasOwnProperty(id)) {
+        deferred.resolve(favorites[id]);
+      } else {
+        deferred.reject('Did not find favorite with that id');
+      }
+
+      return deferred.promise;
+    },
+
+    toggle: function(restaurant) {
+      var deferred = $q.defer();
+
+      var id = restaurant.id;
+
+      if (favorites.hasOwnProperty(id)) {
+        delete favorites[id];
+        deferred.resolve(false);
+      } else {
+        favorites[id] = restaurant.name;
+        deferred.resolve(true);
+      }
+
+      $window.localStorage.setItem('favorites', angular.toJson(favorites));
+
+      return deferred.promise;
+    },
+
+    all: function() {
+      var deferred = $q.defer();
+      deferred.resolve(favorites);
+      return deferred.promise;
+    }
+  }
 });
+

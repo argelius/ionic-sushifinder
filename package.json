@@ -1,5 +1,5 @@
 {
-  "name": "sushifinder",
+  "name": "ionic-sushifinder",
   "version": "1.0.0",
   "description": "Find sushi restaurants near you!",
   "dependencies": {
