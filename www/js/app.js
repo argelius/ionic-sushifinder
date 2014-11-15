@@ -23,15 +23,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.
+  $stateProvider
 
-    state('tab', {
+    .state('tab', {
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html'
-    }).
+    })
 
-    state('tab.find', {
+    .state('tab.find', {
       url: '/find',
       views: {
         'tab-find': {
@@ -39,9 +39,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'FindCtrl'
         }
       }
-    }).
+    })
 
-    state('tab.favorites', {
+    .state('tab.favorites', {
       url: '/favorites',
       views: {
         'tab-favorites': {
@@ -49,9 +49,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'FavoritesCtrl'
         }
       }
-    }).
+    })
 
-    state('tab.restaurants', {
+    .state('tab.restaurants', {
       url: '/restaurants',
       views: {
         'tab-restaurants': {
@@ -59,9 +59,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'RestaurantsCtrl'
         }
       }
-    }).
+    })
 
-    state('tab.restaurant-details', {
+    .state('tab.restaurant-details', {
       url: '/restaurants/:id',
       views: {
         'tab-restaurants': {
@@ -69,9 +69,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'RestaurantCtrl'
         }
       }
-    }).
+    })
 
-    state('tab.restaurant-photos', {
+    .state('tab.restaurant-photos', {
       url: '/restaurants/:id/photos',
       views: {
         'tab-restaurants': {

@@ -1,6 +1,6 @@
-angular.module('starter.controllers', []).
+angular.module('starter.controllers', [])
 
-controller('FindCtrl', function($scope, $q, $geolocation, $foursquare, $window) {
+.controller('FindCtrl', function($scope, $q, $geolocation, $foursquare, $window) {
   $scope.findRestaurants = function() {
     var deferred = $q.defer();
 
@@ -27,21 +27,16 @@ controller('FindCtrl', function($scope, $q, $geolocation, $foursquare, $window) 
   };
 
   $scope.findRestaurants();
-}).
+})
 
-controller('RestaurantsCtrl', function() {
-  console.log("HI");
-}).
+.controller('RestaurantsCtrl', function() {
+})
 
-controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window, Favorites) {
-  console.log($stateParams.id);
-
+.controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window, Favorites) {
   $foursquare.get($stateParams.id).then(
   function(restaurant) {
     $scope.restaurant = restaurant;
     
-    console.log(restaurant);
-
     Favorites.get(restaurant.id).then(
     function() {
       $scope.isFavorite = true;
@@ -59,9 +54,9 @@ controller('RestaurantCtrl', function($scope, $stateParams, $foursquare, $window
       $scope.isFavorite = state;
     });
   };
-}).
+})
 
-controller('RestaurantPhotosCtrl', function($scope, $stateParams, $foursquare, $window) {
+.controller('RestaurantPhotosCtrl', function($scope, $stateParams, $foursquare, $window) {
   $scope.photoWidth = parseInt(0.9*$window.innerWidth);
 
   $foursquare.get($stateParams.id).then(
@@ -71,9 +66,9 @@ controller('RestaurantPhotosCtrl', function($scope, $stateParams, $foursquare, $
   function(error) {
     $window.alert('Unable to find restaurant: ' + error);
   });
-}).
+})
 
-controller('FavoritesCtrl', function($scope, Favorites) {
+.controller('FavoritesCtrl', function($scope, Favorites) {
   Favorites.all().then(
   function(restaurants) {
     $scope.restaurants = restaurants;
@@ -81,9 +76,9 @@ controller('FavoritesCtrl', function($scope, Favorites) {
   function(error) {
     alert(error);
   });
-}).
+})
 
-filter('distance', function() {
+.filter('distance', function() {
   return function(meters) {
     meters = parseInt(meters);
 

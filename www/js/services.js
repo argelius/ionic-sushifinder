@@ -1,6 +1,6 @@
-angular.module('starter.services', []).
+angular.module('starter.services', [])
 
-factory('$geolocation', function($q) {
+.factory('$geolocation', function($q) {
   return {
     get: function() {
       var deferred = $q.defer();
@@ -32,9 +32,9 @@ factory('$geolocation', function($q) {
       return deferred.promise;
     }
   };
-}).
+})
 
-factory('$foursquare', function($q, $http) {
+.factory('$foursquare', function($q, $http) {
   var API_ROOT = 'https://api.foursquare.com/v2/venues/',
     CLIENT_ID = 'U3UTSAZEKJXLB3IZJWTZYQLWTLBQFKLVQ0XQDJPQDRKDII5X',
     CLIENT_SECRET = 'OR4PNP3SGP3TKGYVA5YIONVHM44OSEQ4LYQ2OLWVVVC3AHIB';
@@ -94,9 +94,9 @@ factory('$foursquare', function($q, $http) {
       return deferred.promise;
     }
   }
-}).
+})
 
-factory('Favorites', function($q, $window) {
+.factory('Favorites', function($q, $window) {
   var favorites = angular.fromJson($window.localStorage.getItem('favorites') || '{}');
 
   return {
