@@ -36,8 +36,8 @@ factory('$geolocation', function($q) {
 
 factory('$foursquare', function($q, $http) {
   var API_ROOT = 'https://api.foursquare.com/v2/venues/',
-    CLIENT_ID = '3AQ4HIAWSX01HES220AHR11EJVOX05V4OW34I14BXYLHMGMX',
-    CLIENT_SECRET = '4HOGLN2IXK4PCMKIF10GEKMUEZU00G5M1B5NK0C4VGL0ITGO';
+    CLIENT_ID = 'U3UTSAZEKJXLB3IZJWTZYQLWTLBQFKLVQ0XQDJPQDRKDII5X',
+    CLIENT_SECRET = 'OR4PNP3SGP3TKGYVA5YIONVHM44OSEQ4LYQ2OLWVVVC3AHIB';
 
   return {
     search: function(position, query) {
